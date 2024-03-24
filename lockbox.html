@@ -36,11 +36,17 @@
     }
     #success-image {
         display: none; /* Initially hide the success image */
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 999; /* Ensure it appears above other elements */
+        animation: popOut 0.5s forwards; /* Add animation */
+    }
+
+    @keyframes popOut {
+        0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     }
 </style>
 </head>
@@ -63,7 +69,7 @@
                 document.getElementById("password-form").style.display = "none"; // Hide the password form
                 document.getElementById("success-image").style.display = "block"; // Show the success image
             } else {
-                document.getElementById("message").innerHTML = "Incorrect password. Please try again.";
+                document.getElementById("message").innerHTML = "Incorrect Code.";
             }
         }
     </script>
