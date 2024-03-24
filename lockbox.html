@@ -36,12 +36,13 @@
     }
     #success-image {
         display: none; /* Initially hide the success image */
-        position: fixed;
+        max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+        height: auto; /* Maintain aspect ratio */
+        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 999; /* Ensure it appears above other elements */
-        animation: popOut 0.5s forwards; /* Add animation */
     }
 
     @keyframes popOut {
