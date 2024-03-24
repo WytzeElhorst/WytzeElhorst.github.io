@@ -8,9 +8,10 @@
     body {
         font-family: Arial, sans-serif;
         text-align: center;
-        background-image: url('lockbox.jpeg'); /* Use Image1.png as the background */
-        background-size: cover;
-        background-position: center;
+        background-image: url('lockbox.jpeg'), linear-gradient(brown, brown); /* Use lockbox.jpeg once and brown gradient */
+        background-size: auto, cover; /* lockbox.jpeg is set to auto, gradient is set to cover */
+        background-position: top left, center; /* lockbox.jpeg is positioned at top left, gradient is centered */
+        background-repeat: no-repeat, no-repeat; /* Ensure lockbox.jpeg is not repeated */
     }
     #password-form {
         margin-top: 100px;
