@@ -35,6 +35,9 @@
     button:hover {
         background-color: #45a049;
     }
+    #success-image-container {
+        position: relative; /* Container for the success image */
+    }
     #success-image {
         display: none; /* Initially hide the success image */
         max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
@@ -45,10 +48,11 @@
         transform: translate(-50%, -50%);
         z-index: 999; /* Ensure it appears above other elements */
     }
-
-    @keyframes popOut {
-        0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
-        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    #dismiss-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000; /* Ensure it appears above the image */
     }
 </style>
 </head>
@@ -61,7 +65,10 @@
         </form>
         <p id="message"></p>
     </div>
-    <img id="success-image" src="directions.png" alt="Success Image"> <!-- Success image -->
+    <div id="success-image-container">
+        <img id="success-image" src="directions.png" alt="Success Image"> <!-- Success image -->
+        <button id="dismiss-button" onclick="dismissImage()">Dismiss</button> <!-- Dismiss button -->
+    </div>
 
     <script>
         function checkPassword() {
@@ -73,6 +80,10 @@
             } else {
                 document.getElementById("message").innerHTML = "Incorrect Code.";
             }
+        }
+
+        function dismissImage() {
+            document.getElementById("success-image-container").style.display = "none"; // Hide the success image and dismiss button
         }
     </script>
 </body>
