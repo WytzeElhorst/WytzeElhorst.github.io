@@ -8,15 +8,18 @@
     body {
         font-family: Arial, sans-serif;
         text-align: center;
-        background-image: url('Image.png');
+        background-image: url('Image1.png'); /* Initial background image */
         background-size: cover;
         background-position: center;
+        position: relative; /* Set position to relative for absolute positioning of overlay */
     }
     #password-form {
         margin-top: 100px;
         background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
         padding: 20px;
         border-radius: 10px;
+        position: relative; /* Ensure form is positioned relative to the body */
+        z-index: 1; /* Ensure form is above other content */
     }
     input[type="password"] {
         padding: 10px;
@@ -34,6 +37,23 @@
     button:hover {
         background-color: #45a049;
     }
+    #overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: none;
+        z-index: 2; /* Ensure overlay is above other content */
+    }
+    #overlay img {
+        width: 200px; /* Adjust the size of the overlay image as needed */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 </style>
 </head>
 <body>
@@ -46,11 +66,16 @@
         <p id="message"></p>
     </div>
 
+    <div id="overlay">
+        <img src="Image2.png" alt="Image2"> <!-- Image to display upon successful password -->
+    </div>
+
     <script>
         function checkPassword() {
             var password = document.getElementById("password").value;
-            if (password === "58") { // Replace "yourpassword" with your actual password
+            if (password === "58") { // Replace "58" with your actual password
                 document.getElementById("message").innerHTML = "Password correct. Welcome!";
+                document.getElementById("overlay").style.display = "block"; // Display overlay
             } else {
                 document.getElementById("message").innerHTML = "Incorrect password. Please try again.";
             }
