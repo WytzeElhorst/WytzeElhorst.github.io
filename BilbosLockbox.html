@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilbo's Lock Box</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url('Image.png');
+        background-size: cover;
+        background-position: center;
+    }
+    #password-form {
+        margin-top: 100px;
+        background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+        padding: 20px;
+        border-radius: 10px;
+    }
+    input[type="password"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 200px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <div id="password-form">
+        <h2>Please enter the password:</h2>
+        <form id="login-form" onsubmit="checkPassword(); return false;">
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "yourpassword") { // Replace "yourpassword" with your actual password
+                document.getElementById("message").innerHTML = "Password correct. Welcome!";
+            } else {
+                document.getElementById("message").innerHTML = "Incorrect password. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
