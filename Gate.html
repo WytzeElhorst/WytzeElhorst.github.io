@@ -54,7 +54,7 @@
 </head>
 <body>
     <div id="password-form">
-        <h2>One does not simply walk into mordor, but friends may ask for the way <i>to the Southlands</i></h2>
+        <h2>One does not simply walk into Mordor, but friends may ask for<i> the path to the Black land</i></h2>
         <form id="login-form" onsubmit="checkPassword(); return false;">
             <input type="password" id="password" placeholder="Enter Password" required>
             <button type="submit">Enter</button>
@@ -66,7 +66,7 @@
     <script>
         function checkPassword() {
             var password = document.getElementById("password").value;
-            if (password === "Na i Haradrim") {
+            if (password === "i anda na i Gorgoroth") {
                 document.getElementById("message").innerHTML = "Password correct. Welcome!";
                 document.getElementById("password-form").style.display = "none"; // Hide the password form
                 document.getElementById("success-image").style.display = "block"; // Show the success image
