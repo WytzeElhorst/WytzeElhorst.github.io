@@ -8,10 +8,10 @@
     body {
         font-family: Arial, sans-serif;
         text-align: center;
-        background-image: url('gate.jpeg'), linear-gradient(brown, brown); /* Use lockbox.jpeg once and brown gradient */
-        background-size: auto, cover; /* lockbox.jpeg is set to auto, gradient is set to cover */
-        background-position: top left, center; /* lockbox.jpeg is positioned at top left, gradient is centered */
-        background-repeat: no-repeat, no-repeat; /* Ensure lockbox.jpeg is not repeated */
+        background-image: url('gate.jpeg'), linear-gradient(brown, brown); 
+        background-size: auto, cover;
+        background-position: top left, center; 
+        background-repeat: no-repeat, no-repeat;
     }
     #password-form {
         margin-top: 100px;
@@ -54,7 +54,7 @@
 </head>
 <body>
     <div id="password-form">
-        <h2>Enter Lockbox Combination:</h2>
+        <h2>Enter One does not simply walk into mordor, but friends may ask for the way <i>to the Southlands</i></h2>
         <form id="login-form" onsubmit="checkPassword(); return false;">
             <input type="password" id="password" placeholder="Enter Password" required>
             <button type="submit">Enter</button>
@@ -71,7 +71,7 @@
                 document.getElementById("password-form").style.display = "none"; // Hide the password form
                 document.getElementById("success-image").style.display = "block"; // Show the success image
             } else {
-                document.getElementById("message").innerHTML = "Incorrect Code.";
+                document.getElementById("message").innerHTML = "...";
             }
         }
     </script>
