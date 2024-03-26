@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dwarven Gate</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url('gate.jpeg'), linear-gradient(brown, brown); /* Use lockbox.jpeg once and brown gradient */
+        background-size: auto, cover; /* lockbox.jpeg is set to auto, gradient is set to cover */
+        background-position: top left, center; /* lockbox.jpeg is positioned at top left, gradient is centered */
+        background-repeat: no-repeat, no-repeat; /* Ensure lockbox.jpeg is not repeated */
+    }
+    #password-form {
+        margin-top: 100px;
+        background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+        padding: 20px;
+        border-radius: 10px;
+    }
+    input[type="password"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 200px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #success-image {
+        display: none; /* Initially hide the success image */
+        max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+        height: auto; /* Maintain aspect ratio */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999; /* Ensure it appears above other elements */
+    }
+
+    @keyframes popOut {
+        0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+</style>
+</head>
+<body>
+    <div id="password-form">
+        <h2>Enter Lockbox Combination:</h2>
+        <form id="login-form" onsubmit="checkPassword(); return false;">
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button type="submit">Enter</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <img id="success-image" src="path.png" alt="Success Image"> <!-- Success image -->
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "Na i Haradrim") {
+                document.getElementById("message").innerHTML = "Password correct. Welcome!";
+                document.getElementById("password-form").style.display = "none"; // Hide the password form
+                document.getElementById("success-image").style.display = "block"; // Show the success image
+            } else {
+                document.getElementById("message").innerHTML = "Incorrect Code.";
+            }
+        }
+    </script>
+</body>
+</html>
