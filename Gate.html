@@ -54,19 +54,19 @@
 </head>
 <body>
     <div id="password-form">
-        <h2>One does not simply walk into Mordor, but friends may ask for<i> the path to the Black land</i></h2>
+        <h2>A friend will know to ask for<i> the road to the white city</i></h2>
         <form id="login-form" onsubmit="checkPassword(); return false;">
             <input type="text" id="password" placeholder="Enter Password" required>
             <button type="submit">Enter</button>
         </form>
         <p id="message"></p>
     </div>
-    <img id="success-image" src="path.png" alt="Success Image"> <!-- Success image -->
+    <img id="success-image" src="gatetominas.png" alt="Success Image"> <!-- Success image -->
 
     <script>
         function checkPassword() {
             var password = document.getElementById("password").value;
-            if (password === "i anda na i Gorgoroth") {
+            if (password === "i anda na i gwen ost") {
                 document.getElementById("message").innerHTML = "Password correct. Welcome!";
                 document.getElementById("password-form").style.display = "none"; // Hide the password form
                 document.getElementById("success-image").style.display = "block"; // Show the success image
