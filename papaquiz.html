@@ -118,20 +118,20 @@
         <!-- Initial Question Content Here -->
     </div>
     <div class="popup" id="popupMessage" onclick="hidePopup()">
-        <p>4 Wytze eet mee!</p>
+        <p>Wytze joins for 4!</p>
     </div>
 
     <script>
         let currentQuestionIndex = 0;
         const questions = [
             {
-                explanation: "Hey lieve papa, wij tracteren jou graag op een leuk etentje, wie er allemaal meegaan ligt aan hoe goed jij deze quiz weet te maken! Maak je geen zorgen, je kan hem herkansen.",
-                question: "Hoe heten alle hondjes, van jong naar oud, die jij en mama samen hebben gehad?",
+                explanation: "Dear Papa, we would like to treat you to a nice dinner, and who joins depends on how well you do in this quiz! Don't worry, you can retake it if needed.",
+                question: "What are the names of all the doggies you and Mama have had, from youngest to oldest?",
                 correctAnswers: ["Maya", "Daisy", "Ozzie", "Brisan"],
-                placeholders: ["Het Princesje", "Dapper en lief", "Makkelijk en braaf", "Van voor mijn tijd, maar ook erg lief"]
+                placeholders: ["The Princess", "Brave and Sweet", "Easygoing and Well-behaved", "From before my time, but also very sweet"]
             },
             {
-                explanation: "Hier komt vraag 2, als die er al was...",
+                explanation: "Here comes question 2, if there was one...",
                 question: "Example question 2?",
                 correctAnswers: ["Answer1", "Answer2", "Answer3", "Answer4"],
                 placeholders: ["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"]
@@ -200,8 +200,8 @@
 
             let scoreDisplay = document.getElementById("scoreDisplay");
             let resultMessage = document.getElementById("resultMessage");
-            scoreDisplay.innerHTML = `Je Score: ${correctCount}/4`;
-            resultMessage.innerHTML = `Je Hebt ${correctCount} van de 4 correct!`;
+            scoreDisplay.innerHTML = `Your Score: ${correctCount}/4`;
+            resultMessage.innerHTML = `You got ${correctCount} out of 4 correct!`;
 
             resultMessage.style.marginTop = "20px";
             resultMessage.style.fontSize = "18px";
@@ -228,10 +228,10 @@
             if (currentQuestionIndex < questions.length) {
                 loadQuestion(currentQuestionIndex);
             } else {
-                resultMessage.innerHTML += `<br><br>De quiz is afgelopen! Bedankt voor het meedoen.<br><br>
+                resultMessage.innerHTML += `<br><br>The quiz is over! Thanks for participating.<br><br>
                                             <strong>Papa,</strong><br>
-                                            Bedankt dat je de tijd hebt genomen om deze quiz te maken. We hopen dat je het leuk vond en we kunnen niet wachten om samen met jou een heerlijk etentje te hebben. <br>
-                                            <em>Met veel liefde, [Your Name]</em>`;
+                                            Thank you for taking the time to complete this quiz. We hope you enjoyed it, and we can't wait to have a wonderful dinner with you.<br>
+                                            <em>With lots of love, [Your Name]</em>`;
             }
         }
 
