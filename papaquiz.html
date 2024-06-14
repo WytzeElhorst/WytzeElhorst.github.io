@@ -36,6 +36,7 @@
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
+            max-width: 100%; /* Ensure responsiveness */
         }
         .container {
             background-color: rgba(255, 255, 255, 0.5);
@@ -151,55 +152,61 @@
             questionContainer.innerHTML = newQuestionHTML;
         }
 
-  function bevestig() {
-    const currentQuestion = questions[currentQuestionIndex];
-    const correctAnswers = currentQuestion.correctAnswers;
-    let userAnswers = [
-        document.getElementById("answer1").value.trim().toLowerCase(),
-        document.getElementById("answer2").value.trim().toLowerCase(),
-        document.getElementById("answer3").value.trim().toLowerCase(),
-        document.getElementById("answer4").value.trim().toLowerCase()
-    ];
-    let correctCount = 0;
+        function bevestig() {
+            const currentQuestion = questions[currentQuestionIndex];
+            const correctAnswers = currentQuestion.correctAnswers;
+            let userAnswers = [
+                document.getElementById("answer1").value.trim().toLowerCase(),
+                document.getElementById("answer2").value.trim().toLowerCase(),
+                document.getElementById("answer3").value.trim().toLowerCase(),
+                document.getElementById("answer4").value.trim().toLowerCase()
+            ];
+            let correctCount = 0;
 
-    for (let i = 0; i < userAnswers.length; i++) {
-        if (userAnswers[i] === correctAnswers[i].toLowerCase()) {
-            correctCount++;
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i].toLowerCase()) {
+                    correctCount++;
+                }
+            }
+
+            let scoreDisplay = document.getElementById("scoreDisplay");
+            let resultMessage = document.getElementById("resultMessage");
+            scoreDisplay.innerHTML = `Je Score: ${correctCount}/4`;
+            resultMessage.innerHTML = `Je Hebt ${correctCount} van de 4 correct!`;
+
+            resultMessage.style.marginTop = "20px";
+            resultMessage.style.fontSize = "18px";
+
+            // Check if score is 4 or higher
+            if (correctCount >= 4) {
+                // Show pop-up message
+                alert("4 Punten gehaald: Wytze eet mee");
+
+                // Add third picture to invite list
+                const inviteList = document.querySelector(".invite-list");
+                const thirdInviteItem = `
+                    <div class="invite-item">
+                        <img src="path/to/image3.jpg" alt="Name3">
+                        <p>Name3</p>
+                    </div>
+                `;
+                inviteList.insertAdjacentHTML('beforeend', thirdInviteItem);
+            }
+
+            // Move to the next question if available
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion(currentQuestionIndex);
+            } else {
+                resultMessage.innerHTML += `<br><br>De quiz is afgelopen! Bedankt voor het meedoen.<br><br>
+                                            <strong>Papa,</strong><br>
+                                            Bedankt dat je de tijd hebt genomen om deze quiz te maken. We hopen dat je het leuk vond en we kunnen niet wachten om samen met jou een heerlijk etentje te hebben. <br>
+                                            <em>Met veel liefde, [Your Name]</em>`;
+            }
         }
-    }
 
-    let scoreDisplay = document.getElementById("scoreDisplay");
-    let resultMessage = document.getElementById("resultMessage");
-    scoreDisplay.innerHTML = `Je Score: ${correctCount}/4`;
-    resultMessage.innerHTML = `Je Hebt ${correctCount} van de 4 correct!`;
-
-    resultMessage.style.marginTop = "20px";
-    resultMessage.style.fontSize = "18px";
-
-    // Check if score is 4 or higher
-    if (correctCount >= 4) {
-        // Show pop-up message
-        alert("4 Punten gehaald: Wytze eet mee");
-
-        // Add third picture to invite list
-        const inviteList = document.querySelector(".invite-list");
-        const thirdInviteItem = `
-            <div class="invite-item">
-                <img src="path/to/image3.jpg" alt="Name3">
-                <p>Name3</p>
-            </div>
-        `;
-        inviteList.insertAdjacentHTML('beforeend', thirdInviteItem);
-    }
-
-    // Move to the next question if available
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+        // Initial load of the first question
         loadQuestion(currentQuestionIndex);
-    } else {
-        resultMessage.innerHTML += `<br><br>De quiz is afgelopen! Bedankt voor het meedoen.<br><br>
-                                    <strong>Papa,</strong><br>
-                                    Bedankt dat je de tijd hebt genomen om deze quiz te maken. We hopen dat je het leuk vond en we kunnen niet wachten om samen met jou een heerlijk etentje te hebben. <br>
-                                    <em>Met veel liefde, [Your Name]</em>`;
-    }
-}
+    </script>
+</body>
+</html>
