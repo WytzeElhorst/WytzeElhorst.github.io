@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            background-image: url('background.jpg'); /* Replace with the path to your image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .textbox, .answer-box {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .textbox, .answer-box {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .button {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="score" id="scoreDisplay"></div>
+    <div class="container">
+        <div>
+            <textarea class="textbox" rows="4" readonly>
+This is an explanation of the question. Please read it carefully before answering.
+            </textarea>
+        </div>
+        <div>
+            <p>Hoe heten alle hondjes, van jong naar oud, die jij en mama samen hebben gehad?</p>
+        </div>
+        <div>
+            <input type="text" class="answer-box" id="answer1" placeholder="Answer 1">
+        </div>
+        <div>
+            <input type="text" class="answer-box" id="answer2" placeholder="Answer 2">
+        </div>
+        <div>
+            <input type="text" class="answer-box" id="answer3" placeholder="Answer 3">
+        </div>
+        <div>
+            <input type="text" class="answer-box" id="answer4" placeholder="Answer 4">
+        </div>
+        <div>
+            <button class="button" onclick="bevestig()">Bevestig</button>
+        </div>
+        <div id="resultMessage"></div>
+    </div>
+
+    <script>
+        function bevestig() {
+            const correctAnswers = ["Maya", "Daisy", "Ozzie", "Brisan"]; // Replace with actual correct answers
+            let userAnswers = [
+                document.getElementById("answer1").value.trim().toLowerCase(),
+                document.getElementById("answer2").value.trim().toLowerCase(),
+                document.getElementById("answer3").value.trim().toLowerCase(),
+                document.getElementById("answer4").value.trim().toLowerCase()
+            ];
+            let correctCount = 0;
+
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i].toLowerCase()) {
+                    correctCount++;
+                }
+            }
+
+            let scoreDisplay = document.getElementById("scoreDisplay");
+            let resultMessage = document.getElementById("resultMessage");
+            scoreDisplay.innerHTML = `Your Score: ${correctCount}/4`;
+            resultMessage.innerHTML = `You got ${correctCount} out of 4 correct.`;
+
+            resultMessage.style.marginTop = "20px";
+            resultMessage.style.fontSize = "18px";
+        }
+    </script>
+</body>
+</html>
