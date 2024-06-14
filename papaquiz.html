@@ -45,6 +45,7 @@
             max-width: 400px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
         .textbox, .answer-box {
             width: calc(100% - 20px);
@@ -96,36 +97,63 @@
         </div>
     </div>
     <div class="score" id="scoreDisplay"></div>
-    <div class="container">
-        <div>
-            <textarea class="textbox" rows="4" readonly>
-Hey lieve papa, wij tracteren jou graag op een leuk etentje, wie er allemaal meegaan ligt aan hoe goed jij deze quiz weet te maken! Maak je geen zorgen, je kan hem herkansen.
-            </textarea>
-        </div>
-        <div>
-            <p>Hoe heten alle hondjes, van jong naar oud, die jij en mama samen hebben gehad?</p>
-        </div>
-        <div>
-            <input type="text" class="answer-box" id="answer1" placeholder="Het Princesje">
-        </div>
-        <div>
-            <input type="text" class="answer-box" id="answer2" placeholder="Dapper en lief">
-        </div>
-        <div>
-            <input type="text" class="answer-box" id="answer3" placeholder="Makkelijk en braaf">
-        </div>
-        <div>
-            <input type="text" class="answer-box" id="answer4" placeholder="Van voor mijn tijd, maar ook erg lief">
-        </div>
-        <div>
-            <button class="button" onclick="bevestig()">Bevestig</button>
-        </div>
-        <div id="resultMessage"></div>
+    <div id="questionContainer" class="container">
+        <!-- Initial Question Content Here -->
     </div>
 
     <script>
+        let currentQuestionIndex = 0;
+        const questions = [
+            {
+                explanation: "Hey lieve papa, wij tracteren jou graag op een leuk etentje, wie er allemaal meegaan ligt aan hoe goed jij deze quiz weet te maken! Maak je geen zorgen, je kan hem herkansen.",
+                question: "Hoe heten alle hondjes, van jong naar oud, die jij en mama samen hebben gehad?",
+                correctAnswers: ["Maya", "Daisy", "Ozzie", "Brisan"],
+                placeholders: ["Het Princesje", "Dapper en lief", "Makkelijk en braaf", "Van voor mijn tijd, maar ook erg lief"]
+            },
+            {
+                explanation: "This is the explanation of question 2. Please read it carefully before answering.",
+                question: "Example question 2?",
+                correctAnswers: ["Answer1", "Answer2", "Answer3", "Answer4"],
+                placeholders: ["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"]
+            }
+            // Add more questions as needed
+        ];
+
+        function loadQuestion(index) {
+            const questionContainer = document.getElementById("questionContainer");
+            const questionData = questions[index];
+
+            const newQuestionHTML = `
+                <div>
+                    <textarea class="textbox" rows="4" readonly>${questionData.explanation}</textarea>
+                </div>
+                <div>
+                    <p>${questionData.question}</p>
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer1" placeholder="${questionData.placeholders[0]}">
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer2" placeholder="${questionData.placeholders[1]}">
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer3" placeholder="${questionData.placeholders[2]}">
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer4" placeholder="${questionData.placeholders[3]}">
+                </div>
+                <div>
+                    <button class="button" onclick="bevestig()">Bevestig</button>
+                </div>
+                <div id="resultMessage"></div>
+            `;
+
+            questionContainer.innerHTML = newQuestionHTML;
+        }
+
         function bevestig() {
-            const correctAnswers = ["Maya", "Daisy", "Ozzie", "Brisan"];
+            const currentQuestion = questions[currentQuestionIndex];
+            const correctAnswers = currentQuestion.correctAnswers;
             let userAnswers = [
                 document.getElementById("answer1").value.trim().toLowerCase(),
                 document.getElementById("answer2").value.trim().toLowerCase(),
@@ -140,14 +168,4 @@ Hey lieve papa, wij tracteren jou graag op een leuk etentje, wie er allemaal mee
                 }
             }
 
-            let scoreDisplay = document.getElementById("scoreDisplay");
-            let resultMessage = document.getElementById("resultMessage");
-            scoreDisplay.innerHTML = `Je Score: ${correctCount}/4`;
-            resultMessage.innerHTML = `Je Hebt ${correctCount} van de 4 correct!`;
-
-            resultMessage.style.marginTop = "20px";
-            resultMessage.style.fontSize = "18px";
-        }
-    </script>
-</body>
-</html>
+            let scoreDisplay =
