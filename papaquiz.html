@@ -1,4 +1,157 @@
-function bevestig() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            background-image: url('doggies.jpeg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .invite-list {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .invite-list p {
+            margin-right: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .invite-item {
+            text-align: center;
+            margin: 0 10px;
+        }
+        .invite-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .textbox, .answer-box {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .textbox, .answer-box {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .button {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invite-list">
+        <p>Invite List:</p>
+        <div class="invite-item">
+            <img src="path/to/image1.jpg" alt="Name1">
+            <p>Name1</p>
+        </div>
+        <div class="invite-item">
+            <img src="path/to/image2.jpg" alt="Name2">
+            <p>Name2</p>
+        </div>
+    </div>
+    <div class="score" id="scoreDisplay"></div>
+    <div id="questionContainer" class="container">
+        <!-- Initial Question Content Here -->
+    </div>
+
+    <script>
+        let currentQuestionIndex = 0;
+        const questions = [
+            {
+                explanation: "Hey lieve papa, wij tracteren jou graag op een leuk etentje, wie er allemaal meegaan ligt aan hoe goed jij deze quiz weet te maken! Maak je geen zorgen, je kan hem herkansen.",
+                question: "Hoe heten alle hondjes, van jong naar oud, die jij en mama samen hebben gehad?",
+                correctAnswers: ["Maya", "Daisy", "Ozzie", "Brisan"],
+                placeholders: ["Het Princesje", "Dapper en lief", "Makkelijk en braaf", "Van voor mijn tijd, maar ook erg lief"]
+            },
+            {
+                explanation: "This is the explanation of question 2. Please read it carefully before answering.",
+                question: "Example question 2?",
+                correctAnswers: ["Answer1", "Answer2", "Answer3", "Answer4"],
+                placeholders: ["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"]
+            }
+            // Add more questions as needed
+        ];
+
+        function loadQuestion(index) {
+            const questionContainer = document.getElementById("questionContainer");
+            const questionData = questions[index];
+
+            const newQuestionHTML = `
+                <div>
+                    <textarea class="textbox" rows="4" readonly>${questionData.explanation}</textarea>
+                </div>
+                <div>
+                    <p>${questionData.question}</p>
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer1" placeholder="${questionData.placeholders[0]}">
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer2" placeholder="${questionData.placeholders[1]}">
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer3" placeholder="${questionData.placeholders[2]}">
+                </div>
+                <div>
+                    <input type="text" class="answer-box" id="answer4" placeholder="${questionData.placeholders[3]}">
+                </div>
+                <div>
+                    <button class="button" onclick="bevestig()">Bevestig</button>
+                </div>
+                <div id="resultMessage"></div>
+            `;
+
+            questionContainer.innerHTML = newQuestionHTML;
+        }
+
+  function bevestig() {
     const currentQuestion = questions[currentQuestionIndex];
     const correctAnswers = currentQuestion.correctAnswers;
     let userAnswers = [
@@ -47,5 +200,6 @@ function bevestig() {
         resultMessage.innerHTML += `<br><br>De quiz is afgelopen! Bedankt voor het meedoen.<br><br>
                                     <strong>Papa,</strong><br>
                                     Bedankt dat je de tijd hebt genomen om deze quiz te maken. We hopen dat je het leuk vond en we kunnen niet wachten om samen met jou een heerlijk etentje te hebben. <br>
-                                    <em>Met liefs, [Didi, Jeroen, Lisanne & Wytze]</em>`;
-   
+                                    <em>Met veel liefde, [Your Name]</em>`;
+    }
+}
