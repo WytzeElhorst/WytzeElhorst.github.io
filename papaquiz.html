@@ -218,4 +218,27 @@
                         <p>Wytze</p>
                     </div>
                 `;
-                inviteList.insertAdjacentHTML('beforeend
+                inviteList.insertAdjacentHTML('beforeend', thirdInviteItem);
+            } else {
+                hidePopup();
+            }
+
+            // Move to the next question if available
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion(currentQuestionIndex);
+            } else {
+                resultMessage.innerHTML += `<br><br>De quiz is afgelopen! Bedankt voor het meedoen.<br><br>
+                                            <strong>Papa,</strong><br>
+                                            Bedankt dat je de tijd hebt genomen om deze quiz te maken. We hopen dat je het leuk vond en we kunnen niet wachten om samen met jou een heerlijk etentje te hebben. <br>
+                                            <em>Met veel liefde, [Your Name]</em>`;
+            }
+        }
+
+        // Initial load of the first question
+        window.onload = function() {
+            loadQuestion(currentQuestionIndex);
+        };
+    </script>
+</body>
+</html>
