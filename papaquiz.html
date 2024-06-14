@@ -32,8 +32,8 @@
             margin: 0 10px;
         }
         .invite-item img {
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
             max-width: 100%; /* Ensure responsiveness */
@@ -102,12 +102,12 @@
     <div class="invite-list">
         <p>Invite List:</p>
         <div class="invite-item">
-            <img src="path/to/image1.jpg" alt="Name1">
-            <p>Name1</p>
+            <img src="papa.jpg" alt="Axel">
+            <p>Axel</p>
         </div>
         <div class="invite-item">
-            <img src="path/to/image2.jpg" alt="Name2">
-            <p>Name2</p>
+            <img src="mama.jpg" alt="Monique">
+            <p>Monique</p>
         </div>
     </div>
     <div class="score" id="scoreDisplay"></div>
@@ -115,7 +115,7 @@
         <!-- Initial Question Content Here -->
     </div>
     <div class="popup" id="popupMessage">
-        <p>4 Punten gehaald: Wytze eet mee</p>
+        <p>4 Wytze eet mee!</p>
     </div>
 
     <script>
@@ -211,8 +211,8 @@
                 const inviteList = document.querySelector(".invite-list");
                 const thirdInviteItem = `
                     <div class="invite-item">
-                        <img src="path/to/image3.jpg" alt="Name3">
-                        <p>Name3</p>
+                        <img src="wytze.jpg" alt="Wytze">
+                        <p>Wytze</p>
                     </div>
                 `;
                 inviteList.insertAdjacentHTML('beforeend', thirdInviteItem);
