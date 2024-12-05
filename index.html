@@ -8,22 +8,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="invite-list">
-    <p>Invite List:</p>
-    <div class="invite-item">
-        <img src="papa.jpg" alt="Axel">
-        <p>Axel</p>
+<div class="top-bar">
+    <div class="invite-list">
+        <p>Invite List:</p>
+        <div class="invite-item">
+            <img src="papa.jpg" alt="Axel">
+            <p>Axel</p>
+        </div>
+        <div class="invite-item">
+            <img src="mama.jpg" alt="Monique">
+            <p>Monique</p>
+        </div>
     </div>
-    <div class="invite-item">
-        <img src="mama.jpg" alt="Monique">
-        <p>Monique</p>
-    </div>
+    <div class="score-display" id="scoreDisplay">Score: 0</div>
 </div>
+
 <div class="container" id="introContainer">
     <p>Lieve papa, we willen jou graag mee uit eten nemen. Wie allemaal meegaan hangt af van hoe goed je de quiz maakt! Maar geen zorgen, je kunt hem herkansen!</p>
     <button class="button" id="startQuizButton" onclick="startQuiz()">Start Quiz</button>
 </div>
-<div class="score" id="scoreDisplay" style="display: none;"></div>
 <div id="questionContainer" class="container" style="display: none;"></div>
 <div class="popup" id="popupMessage" onclick="hidePopup()">
     <p>Wytze eet ook mee!</p>

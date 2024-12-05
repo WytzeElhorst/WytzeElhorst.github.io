@@ -67,37 +67,32 @@ function loadQuestion(index) {
 function bevestig() {
     const currentQuestion = questions[currentQuestionIndex];
     let correctCount = 0;
-    let userAnswers;
 
     if (currentQuestion.answerType === "text") {
         // Collect answers from text boxes
-        userAnswers = currentQuestion.placeholders.map((_, idx) =>
+        const userAnswers = currentQuestion.placeholders.map((_, idx) =>
             document.getElementById(`answer${idx + 1}`).value.trim().toLowerCase()
         );
         correctCount = userAnswers.filter((answer, idx) => answer === currentQuestion.correctAnswers[idx].toLowerCase()).length;
     } else if (currentQuestion.answerType === "multiple-choice") {
         // Collect selected answer from radio buttons
         const selectedOption = document.querySelector('input[name="answer"]:checked');
-        userAnswers = selectedOption ? selectedOption.value : null;
-        if (userAnswers === currentQuestion.correctAnswer) {
+        const userAnswer = selectedOption ? selectedOption.value : null;
+        if (userAnswer === currentQuestion.correctAnswer) {
             correctCount = 1;
         }
     }
 
+    // Update the score display
     const scoreDisplay = document.getElementById("scoreDisplay");
-    const resultMessage = document.getElementById("resultMessage");
-    scoreDisplay.innerHTML = `Your Score: ${correctCount}/${currentQuestion.answerType === "text" ? currentQuestion.correctAnswers.length : 1}`;
-    resultMessage.innerHTML = `You got ${correctCount} correct!`;
-
-    if (correctCount === currentQuestion.correctAnswers.length || correctCount === 1) {
-        showPopup();
-    }
+    const currentScore = parseInt(scoreDisplay.textContent.replace("Score: ", "")) || 0;
+    scoreDisplay.textContent = `Score: ${currentScore + correctCount}`;
 
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         loadQuestion(currentQuestionIndex);
     } else {
-        resultMessage.innerHTML += `<br><br>The quiz is over! Thanks for participating.`;
+        document.getElementById("questionContainer").innerHTML = `<p>The quiz is over! Thanks for participating.</p>`;
     }
 }
 
