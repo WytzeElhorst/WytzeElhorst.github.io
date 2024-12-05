@@ -1,0 +1,14 @@
+[
+  {
+    "explanation": "Lieve papa, we willen jou graag mee uit eten nemen...",
+    "question": "Hoe heten alle hondjes die jij ooit samen met mama hebt gehad, van jong naar oud?",
+    "correctAnswers": ["Maya", "Daisy", "Ozzie", "Brisan"],
+    "placeholders": ["Het Princesje", "Dapper en Lief", "Makkelijk en Braaf", "Van voor mijn tijd, maar ook erg lief"]
+  },
+  {
+    "explanation": "Hier komt vraag 2, als die er was...",
+    "question": "Example question 2?",
+    "correctAnswers": ["Answer1", "Answer2", "Answer3", "Answer4"],
+    "placeholders": ["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"]
+  }
+]

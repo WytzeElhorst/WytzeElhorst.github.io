@@ -1,0 +1,99 @@
+body {
+    background-image: url('doggies.jpeg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.invite-list {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: white;
+}
+.invite-list p {
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 2px 2px 2px black;
+}
+.invite-item {
+    text-align: center;
+    margin: 0 10px;
+}
+.invite-item img {
+    width: auto;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    max-width: 100%;
+}
+.container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+.textbox, .answer-box {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+.button:hover {
+    background-color: #45a049;
+}
+.score {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.questioncontainer {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: white;
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .textbox, .answer-box {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}

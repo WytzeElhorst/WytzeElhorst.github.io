@@ -5,247 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Page</title>
     <meta name="google" content="notranslate">
-    <style>
-        body {
-            background-image: url('doggies.jpeg');
-            background-size: cover;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .invite-list {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            color: white; /* Set text color to white */
-        }
-        
-        .invite-list p {
-            margin-right: 20px;
-            font-weight: bold;
-            font-size: 18px;
-            text-shadow: 2px 2px 2px black; /* Add black shadow with offsets for outline effect */
-        }
-        .invite-item {
-            text-align: center;
-            margin: 0 10px;
-        }
-        .invite-item img {
-            width: auto; /* Allow the image to size itself proportionally */
-            height: 50px; /* Fixed height if needed */
-            border-radius: 50%;
-            object-fit: cover;
-            max-width: 100%; /* Ensure responsiveness */
-        }
-        .container {
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-        .textbox, .answer-box {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .button {
-            padding: 10px 20px;
-            margin-top: 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-        .score {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .questioncontainer {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            color: white; /* Set text color to white */
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 1000;
-            text-align: center;
-        }
-        @media (max-width: 600px) {
-            .textbox, .answer-box {
-                font-size: 14px;
-                padding: 8px;
-            }
-            .button {
-                padding: 12px 20px;
-                font-size: 16px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="invite-list">
-        <p>Invite List:</p>
-        <div class="invite-item">
-            <img src="papa.jpg" alt="Axel">
-            <p>Axel</p>
-        </div>
-        <div class="invite-item">
-            <img src="mama.jpg" alt="Monique">
-            <p>Monique</p>
-        </div>
+<div class="invite-list">
+    <p>Invite List:</p>
+    <div class="invite-item">
+        <img src="papa.jpg" alt="Axel">
+        <p>Axel</p>
     </div>
-    <div class="score" id="scoreDisplay"></div>
-    <div id="questionContainer" class="container">
-        <!-- Initial Question Content Here -->
+    <div class="invite-item">
+        <img src="mama.jpg" alt="Monique">
+        <p>Monique</p>
     </div>
-    <div class="popup" id="popupMessage" onclick="hidePopup()">
-        <p>Wytze eet ook mee!</p>
-    </div>
+</div>
+<div class="score" id="scoreDisplay"></div>
+<div id="questionContainer" class="container"></div>
+<div class="popup" id="popupMessage" onclick="hidePopup()">
+    <p>Wytze eet ook mee!</p>
+</div>
+<script>
+    let currentQuestionIndex = 0;
+    let questions = [];
 
-    <script>
-        let currentQuestionIndex = 0;
-        const questions = [
-            {
-                explanation: "Lieve papa, we willen jou graag mee uit eten nemen. Wie allemaal meegaan hangt af van hoe goed je de quiz maakt! Maar geen zorgen, je kunt hem herkansen!",
-                question: "Hoe heten alle hondjes die jij ooit samen met mama hebt gehad, van jong naar oud?",
-                correctAnswers: ["Maya", "Daisy", "Ozzie", "Brisan"],
-                placeholders: ["Het Princesje", "Dapper en Lief", "Makkelijk en Braaf", "Van voor mijn tijd, maar ook erg lief"]
-            },
-            {
-                explanation: "Hier komt vraag 2, als die er was...",
-                question: "Example question 2?",
-                correctAnswers: ["Answer1", "Answer2", "Answer3", "Answer4"],
-                placeholders: ["Placeholder 1", "Placeholder 2", "Placeholder 3", "Placeholder 4"]
-            }
-            // Add more questions as needed
+    async function loadQuestions() {
+        const response = await fetch('questions.json');
+        questions = await response.json();
+        loadQuestion(currentQuestionIndex);
+    }
+
+    function loadQuestion(index) {
+        const questionContainer = document.getElementById("questionContainer");
+        const questionData = questions[index];
+        const newQuestionHTML = `
+            <div>
+                <textarea class="textbox" rows="4" readonly>${questionData.explanation}</textarea>
+            </div>
+            <div>
+                <p>${questionData.question}</p>
+            </div>
+            <div>
+                <input type="text" class="answer-box" id="answer1" placeholder="${questionData.placeholders[0]}">
+            </div>
+            <div>
+                <input type="text" class="answer-box" id="answer2" placeholder="${questionData.placeholders[1]}">
+            </div>
+            <div>
+                <input type="text" class="answer-box" id="answer3" placeholder="${questionData.placeholders[2]}">
+            </div>
+            <div>
+                <input type="text" class="answer-box" id="answer4" placeholder="${questionData.placeholders[3]}">
+            </div>
+            <div>
+                <button class="button" onclick="bevestig()">Bevestig</button>
+            </div>
+            <div id="resultMessage"></div>
+        `;
+        questionContainer.innerHTML = newQuestionHTML;
+    }
+
+    function bevestig() {
+        const currentQuestion = questions[currentQuestionIndex];
+        const correctAnswers = currentQuestion.correctAnswers;
+        let userAnswers = [
+            document.getElementById("answer1").value.trim().toLowerCase(),
+            document.getElementById("answer2").value.trim().toLowerCase(),
+            document.getElementById("answer3").value.trim().toLowerCase(),
+            document.getElementById("answer4").value.trim().toLowerCase()
         ];
+        let correctCount = 0;
 
-        function loadQuestion(index) {
-            const questionContainer = document.getElementById("questionContainer");
-            const questionData = questions[index];
+        for (let i = 0; i < userAnswers.length; i++) {
+            if (userAnswers[i] === correctAnswers[i].toLowerCase()) {
+                correctCount++;
+            }
+        }
 
-            const newQuestionHTML = `
-                <div>
-                    <textarea class="textbox" rows="4" readonly>${questionData.explanation}</textarea>
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        const resultMessage = document.getElementById("resultMessage");
+        scoreDisplay.innerHTML = `Your Score: ${correctCount}/4`;
+        resultMessage.innerHTML = `You got ${correctCount} out of 4 correct!`;
+
+        if (correctCount >= 4) {
+            showPopup();
+            const inviteList = document.querySelector(".invite-list");
+            const thirdInviteItem = `
+                <div class="invite-item">
+                    <img src="wytze.jpg" alt="Wytze">
+                    <p>Wytze</p>
                 </div>
-                <div>
-                    <p>${questionData.question}</p>
-                </div>
-                <div>
-                    <input type="text" class="answer-box" id="answer1" placeholder="${questionData.placeholders[0]}">
-                </div>
-                <div>
-                    <input type="text" class="answer-box" id="answer2" placeholder="${questionData.placeholders[1]}">
-                </div>
-                <div>
-                    <input type="text" class="answer-box" id="answer3" placeholder="${questionData.placeholders[2]}">
-                </div>
-                <div>
-                    <input type="text" class="answer-box" id="answer4" placeholder="${questionData.placeholders[3]}">
-                </div>
-                <div>
-                    <button class="button" onclick="bevestig()">Bevestig</button>
-                </div>
-                <div id="resultMessage"></div>
             `;
-
-            questionContainer.innerHTML = newQuestionHTML;
+            inviteList.insertAdjacentHTML('beforeend', thirdInviteItem);
         }
 
-        function showPopup() {
-            const popup = document.getElementById("popupMessage");
-            popup.style.display = "block";
-        }
-
-        function hidePopup() {
-            const popup = document.getElementById("popupMessage");
-            popup.style.display = "none";
-        }
-
-        function bevestig() {
-            const currentQuestion = questions[currentQuestionIndex];
-            const correctAnswers = currentQuestion.correctAnswers;
-            let userAnswers = [
-                document.getElementById("answer1").value.trim().toLowerCase(),
-                document.getElementById("answer2").value.trim().toLowerCase(),
-                document.getElementById("answer3").value.trim().toLowerCase(),
-                document.getElementById("answer4").value.trim().toLowerCase()
-            ];
-            let correctCount = 0;
-
-            for (let i = 0; i < userAnswers.length; i++) {
-                if (userAnswers[i] === correctAnswers[i].toLowerCase()) {
-                    correctCount++;
-                }
-            }
-
-            let scoreDisplay = document.getElementById("scoreDisplay");
-            let resultMessage = document.getElementById("resultMessage");
-            scoreDisplay.innerHTML = `Your Score: ${correctCount}/4`;
-            resultMessage.innerHTML = `You got ${correctCount} out of 4 correct!`;
-
-            resultMessage.style.marginTop = "20px";
-            resultMessage.style.fontSize = "18px";
-
-            // Show or hide the pop-up message based on score
-            if (correctCount >= 4) {
-                showPopup();
-
-                // Add third picture to invite list
-                const inviteList = document.querySelector(".invite-list");
-                const thirdInviteItem = `
-                    <div class="invite-item">
-                        <img src="wytze.jpg" alt="Wytze">
-                        <p>Wytze</p>
-                    </div>
-                `;
-                inviteList.insertAdjacentHTML('beforeend', thirdInviteItem);
-            } else {
-                hidePopup();
-            }
-
-            // Move to the next question if available
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion(currentQuestionIndex);
-            } else {
-                resultMessage.innerHTML += `<br><br>The quiz is over! Thanks for participating.<br><br>
-                                            <strong>Papa,</strong><br>
-                                            Thank you for taking the time to complete this quiz. We hope you enjoyed it, and we can't wait to have a wonderful dinner with you.<br>
-                                            <em>With lots of love, [Your Name]</em>`;
-            }
-        }
-
-        // Initial load of the first question
-        window.onload = function() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
             loadQuestion(currentQuestionIndex);
-        };
-    </script>
+        } else {
+            resultMessage.innerHTML += `<br><br>The quiz is over! Thanks for participating.`;
+        }
+    }
+
+    window.onload = loadQuestions;
+</script>
 </body>
 </html>
