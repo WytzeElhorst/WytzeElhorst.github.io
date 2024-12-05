@@ -98,9 +98,9 @@ body {
     }
 }
 .textbox {
-    background-color: #c4b99f;
-    color: #3b3226;
-    border: 1px solid #a1947e;
+    background-color: #f0f0f0;
+    color: #333333;
+    border: 1px solid #cccccc;
     border-radius: 8px;
     padding: 10px;
     width: calc(100% - 20px);
