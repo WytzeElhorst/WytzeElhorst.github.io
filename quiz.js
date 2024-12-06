@@ -20,12 +20,13 @@ function startQuiz() {
 function loadQuestion(index) {
     const questionContainer = document.getElementById("questionContainer");
     const questionData = questions[index];
+
     let newQuestionHTML = `
         <div>
-            <textarea class="textbox" rows="4" readonly>${questionData.explanation}</textarea>
+            <img src="${questionData.image}" alt="Question Image" class="question-image">
         </div>
         <div>
-            <img src="${questionData.image}" alt="Question Image" style="width: 100%; max-width: 400px; border-radius: 10px; margin: 20px 0;">
+            <textarea class="textbox" rows="4" readonly>${questionData.explanation}</textarea>
         </div>
         <div>
             <p>${questionData.question}</p>
@@ -64,6 +65,7 @@ function loadQuestion(index) {
 
     questionContainer.innerHTML = newQuestionHTML;
 }
+
 
 function bevestig() {
     const currentQuestion = questions[currentQuestionIndex];

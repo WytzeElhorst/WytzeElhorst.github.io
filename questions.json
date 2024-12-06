@@ -5,14 +5,38 @@
     "answerType": "text",
     "correctAnswers": ["Maya", "Daisy", "Ozzie", "Brisan"],
     "placeholders": ["Het Princesje", "Dapper en Lief", "Makkelijk en Braaf", "Van voor mijn tijd, maar ook erg lief"],
-    "image": "images/hondjes.jpg"
+    "image": "Images/doggies.jpeg"
   },
   {
-    "explanation": "Hier komt een multiple-choice vraag...",
-    "question": "Welke van deze dieren heeft papa nooit gehad?",
+    "explanation": "",
+    "question": "Waar is dit??",
     "answerType": "multiple-choice",
-    "options": ["Kat", "Hond", "Papegaai", "Schildpad"],
-    "correctAnswer": "Papegaai",
-    "image": "images/animals.jpg"
+    "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
+    "correctAnswer": "Valkenburg",
+    "image": "Images/Valkenburg.jpg"
+  },
+  {
+    "explanation": "",
+    "question": "Waar is dit??",
+    "answerType": "multiple-choice",
+    "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
+    "correctAnswer": "Ardennen",
+    "image": "Images/Ardennen.jpeg"
+  },
+  {
+    "explanation": "",
+    "question": "Waar is dit??",
+    "answerType": "multiple-choice",
+    "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
+    "correctAnswer": "Praag",
+    "image": "Images/Tsjechie.jpg"
+  },
+  {
+    "explanation": "",
+    "question": "Waar is dit??",
+    "answerType": "multiple-choice",
+    "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
+    "correctAnswer": "Gelselaar",
+    "image": "Images/gelselaar.jpg"
   }
 ]
