@@ -66,9 +66,6 @@ function loadQuestion(index) {
     questionContainer.innerHTML = newQuestionHTML;
 }
 
-
-let totalScore = 0; // Track the total score
-
 function bevestig() {
     const currentQuestion = questions[currentQuestionIndex];
     let correctCount = 0;
