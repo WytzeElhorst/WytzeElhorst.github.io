@@ -10,7 +10,7 @@
     "question": "Hoe heten de katjes die jij ooit samen met mama hebt gehad?",
     "answerType": "text",
     "correctAnswers": ["Sammie", "Billy", "Ilias"],
-    "image": "Images/doggies.jpeg"
+    "image": "Images/katjes.webp"
   },
   {
     "question": "In welke volgorde hebben wij deze landen bezocht? (1 = eerst, 4 = laastst)",
@@ -66,7 +66,7 @@
     "question": "Welk van deze namen was niet van één van onze cavias?",
     "answerType": "multiple-choice",
     "options": ["Ilias", "Remi", "Ozzie", "Laika"],
-    "correctAnswer": "Sammie",
+    "correctAnswer": "Ilias",
     "image": "Images/cavia.jpg"
   },
   {
@@ -81,15 +81,7 @@
     "answerType": "ranking",
     "options": ["Egypte", "Denemarken", "Frankrijk", "Friesland"],
     "dropdownOptions": ["Hond", "Kat", "Eend", "Geit"],
-    "correctAnswers": ["2", "4", "1", "3"],
-    "image": "Images/paws.webp"
-  },
-  {
-    "question": "Welk dier past bij welke vakantie?",
-    "answerType": "ranking",
-    "options": ["Egypte", "Denemarken", "Frankrijk", "Friesland"],
-    "dropdownOptions": ["Hond", "Kat", "Eend", "Geit"],
-    "correctAnswers": ["2", "4", "1", "3"],
+    "correctAnswers": ["Kat", "Geit", "Hond", "Eend"],
     "image": "Images/paws.webp"
   }
 ]
