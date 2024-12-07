@@ -29,7 +29,7 @@ function loadQuestion() {
 
         const resultMessage = document.getElementById("resultMessage");
         resultMessage.innerHTML = `
-            <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je hem nog een keertje proberen!</p>
+            <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je hem nog een keertje proberen of heeft die gene pech!</p>
             <button class="button" onclick="resetQuiz()">Reset Quiz</button>
         `;
         resultMessage.style.display = "block"; // Ensure the result message is visible
