@@ -1,5 +1,6 @@
 let totalScore = 0;
 let questions = [];
+let currentQuestion = null;
 let remainingQuestions = [];
 
 // Fetch questions from JSON file
@@ -22,14 +23,14 @@ function startQuiz() {
 
 function loadQuestion() {
     if (remainingQuestions.length === 0) {
-        // No more questions to ask, end the quiz
+        // End the quiz if no questions remain
         const questionContainer = document.getElementById("questionContainer");
         questionContainer.style.display = "none";
 
         const resultMessage = document.getElementById("resultMessage");
         resultMessage.innerHTML = `
-            <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je de quiz nog een keertje proberen!</p>
-            <button class="button" onclick="resetQuiz()">Herstart Quiz</button>
+            <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je hem nog een keertje proberen!</p>
+            <button class="button" onclick="resetQuiz()">Reset Quiz</button>
         `;
         resultMessage.style.display = "block";
         return;
@@ -37,10 +38,11 @@ function loadQuestion() {
 
     // Randomly select a question
     const randomIndex = Math.floor(Math.random() * remainingQuestions.length);
-    const currentQuestionIndex = remainingQuestions.splice(randomIndex, 1)[0]; // Remove the question from the list
+    const selectedIndex = remainingQuestions.splice(randomIndex, 1)[0];
+    currentQuestion = questions[selectedIndex]; // Assign the selected question to the global variable
 
     const questionContainer = document.getElementById("questionContainer");
-    const questionData = questions[currentQuestionIndex];
+    const questionData = currentQuestion;
 
     let newQuestionHTML = `
         <div>
@@ -100,27 +102,32 @@ function loadQuestion() {
 }
 
 function bevestig() {
-        const currentQuestion = questions.find(question => question === questions[currentQuestionIndex]);
-        let correctCount = 0;
+    if (!currentQuestion) {
+        console.error("No current question found!");
+        return;
+    }
+
+    let correctCount = 0;
 
     if (currentQuestion.answerType === "text") {
+        // Gather user inputs and compare without considering order
         const userAnswers = currentQuestion.placeholders.map((_, idx) =>
             document.getElementById(`answer${idx + 1}`).value.trim().toLowerCase()
         );
-
         const correctAnswers = currentQuestion.correctAnswers.map(answer => answer.toLowerCase());
         correctCount = userAnswers.filter(answer => correctAnswers.includes(answer)).length;
     } else if (currentQuestion.answerType === "multiple-choice") {
+        // Evaluate the selected option
         const selectedOption = document.querySelector('input[name="answer"]:checked');
         const userAnswer = selectedOption ? selectedOption.value : null;
         if (userAnswer === currentQuestion.correctAnswer) {
             correctCount = 2; // Assign 2 points for correct multiple-choice answers
         }
     } else if (currentQuestion.answerType === "ranking") {
+        // Check each dropdown selection against the correct answers
         const userAnswers = currentQuestion.options.map((_, idx) =>
             document.getElementById(`answer${idx + 1}`).value
         );
-
         correctCount = userAnswers.reduce((count, selectedOption, idx) => {
             return count + (selectedOption === currentQuestion.correctAnswers[idx] ? 1 : 0);
         }, 0);
