@@ -57,7 +57,7 @@ function loadQuestion() {
         questionData.placeholders.forEach((placeholder, idx) => {
             newQuestionHTML += `
                 <div>
-                    <input type="text" class="answer-box" id="answer${idx + 1}" placeholder="${placeholder}">
+                    <input type="text" class="answer-box" id="answer${idx + 1}">
                 </div>
             `;
         });
