@@ -26,9 +26,6 @@ function loadQuestion(index) {
             <img src="${questionData.image}" alt="Question Image" class="question-image">
         </div>
         <div>
-            <textarea class="textbox" rows="4" readonly>${questionData.explanation}</textarea>
-        </div>
-        <div>
             <p>${questionData.question}</p>
         </div>
     `;
@@ -93,17 +90,17 @@ function bevestig() {
     scoreDisplay.textContent = `Score: ${totalScore}`;
 
     // Show the popup and add another image if score reaches 4
-    if (totalScore >= 4 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+    if (totalScore >= 4 && !document.querySelector('.invite-item img[alt="Lisanne"]')) {
         showPopup();
         addInviteeImage("Images/schatje.jpg", "Lisanne");
     }
 
-    if (totalScore >= 5 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+    if (totalScore >= 5 && !document.querySelector('.invite-item img[alt="Jeroen"]')) {
             showPopup();
             addInviteeImage("Images/jeroen.jpg", "Jeroen");
     }
 
-    if (totalScore >= 6 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+    if (totalScore >= 6 && !document.querySelector('.invite-item img[alt="Didi"]')) {
             showPopup();
             addInviteeImage("Images/Didi.jpg", "Didi");
     }

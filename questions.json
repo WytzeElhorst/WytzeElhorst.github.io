@@ -1,6 +1,5 @@
 [
   {
-    "explanation": "Lieve papa, we willen jou graag mee uit eten nemen...",
     "question": "Hoe heten alle hondjes die jij ooit samen met mama hebt gehad, van jong naar oud?",
     "answerType": "text",
     "correctAnswers": ["Maya", "Daisy", "Ozzie", "Brisan"],
@@ -8,7 +7,6 @@
     "image": "Images/doggies.jpeg"
   },
   {
-    "explanation": "",
     "question": "Waar is dit??",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
@@ -16,7 +14,6 @@
     "image": "Images/Valkenburg.jpg"
   },
   {
-    "explanation": "",
     "question": "Waar is dit??",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
@@ -24,7 +21,6 @@
     "image": "Images/Ardennen.jpeg"
   },
   {
-    "explanation": "",
     "question": "Waar is dit??",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
@@ -32,7 +28,6 @@
     "image": "Images/Tsjechie.jpg"
   },
   {
-    "explanation": "",
     "question": "Waar is dit??",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
@@ -40,7 +35,6 @@
     "image": "Images/gelselaar.jpg"
   },
   {
-    "explanation": "",
     "question": "Wie is dit??",
     "answerType": "multiple-choice",
     "options": ["Wytze", "Feiko", "Tibbe", "Auke"],
