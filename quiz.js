@@ -116,7 +116,7 @@ function bevestig() {
     if (currentQuestionIndex < questions.length) {
         loadQuestion(currentQuestionIndex);
     } else {
-        resultMessage.innerHTML += `<br><br>De Quiz is af, hopelijk mag iedereen mee! Zo niet dan kan je hem nog een keertje proberen!<br><br>;
+        resultMessage.innerHTML += `<br><br>De Quiz is af, hopelijk mag iedereen mee! Zo niet dan kan je hem nog een keertje proberen!<br><br>';
     }
 }
 
