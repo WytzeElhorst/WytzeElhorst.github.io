@@ -67,6 +67,8 @@ function loadQuestion(index) {
 }
 
 
+let totalScore = 0; // Track the total score
+
 function bevestig() {
     const currentQuestion = questions[currentQuestionIndex];
     let correctCount = 0;
@@ -91,7 +93,28 @@ function bevestig() {
 
     // Update the score display
     const scoreDisplay = document.getElementById("scoreDisplay");
-    scoreDisplay.textContent = `Your Score: ${totalScore}`;
+    scoreDisplay.textContent = `Score: ${totalScore}`;
+
+    // Show the popup and add another image if score reaches 4
+    if (totalScore >= 4 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+        showPopup();
+        addInviteeImage("Images/schatje.jpg", "Lisanne");
+    }
+
+    if (totalScore >= 5 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+            showPopup();
+            addInviteeImage("Images/jeroen.jpg", "Jeroen");
+    }
+
+    if (totalScore >= 6 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+            showPopup();
+            addInviteeImage("Images/Didi.jpg", "Didi");
+    }
+
+    if (totalScore >= 7 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+            showPopup();
+            addInviteeImage("Images/wytze.jpg", "Wytze");
+    }
 
     // Show feedback for the current question
     const resultMessage = document.getElementById("resultMessage");
@@ -120,6 +143,17 @@ function showPopup() {
 function hidePopup() {
     const popup = document.getElementById("popupMessage");
     popup.style.display = "none";
+}
+
+function addInviteeImage(imagePath, name) {
+    const inviteList = document.querySelector(".invite-list");
+    const newInviteItem = `
+        <div class="invite-item">
+            <img src="${imagePath}" alt="${name}">
+            <p>${name}</p>
+        </div>
+    `;
+    inviteList.insertAdjacentHTML('beforeend', newInviteItem);
 }
 
 // Load questions on page load

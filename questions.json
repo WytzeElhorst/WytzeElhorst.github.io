@@ -38,5 +38,13 @@
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
     "correctAnswer": "Gelselaar",
     "image": "Images/gelselaar.jpg"
+  },
+  {
+    "explanation": "",
+    "question": "Wie is dit??",
+    "answerType": "multiple-choice",
+    "options": ["Wytze", "Feiko", "Tibbe", "Auke"],
+    "correctAnswer": "Feiko",
+    "image": "Images/wie.png"
   }
 ]
