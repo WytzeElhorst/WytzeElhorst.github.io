@@ -134,22 +134,22 @@ function bevestig() {
     scoreDisplay.textContent = `Score: ${totalScore}`;
 
     // Show the popup and add another image if score reaches a certain value
-    if (totalScore >= 4 && !document.querySelector('.invite-item img[alt="Lisanne"]')) {
+    if (totalScore >= 7 && !document.querySelector('.invite-item img[alt="Lisanne"]')) {
         showPopup("Lisanne");
         addInviteeImage("Images/schatje.jpg", "Lisanne");
     }
 
-    if (totalScore >= 5 && !document.querySelector('.invite-item img[alt="Jeroen"]')) {
+    if (totalScore >= 14 && !document.querySelector('.invite-item img[alt="Jeroen"]')) {
         showPopup("Jeroen");
         addInviteeImage("Images/jeroen.jpg", "Jeroen");
     }
 
-    if (totalScore >= 6 && !document.querySelector('.invite-item img[alt="Didi"]')) {
+    if (totalScore >= 22 && !document.querySelector('.invite-item img[alt="Didi"]')) {
         showPopup("Didi");
         addInviteeImage("Images/Didi.jpg", "Didi");
     }
 
-    if (totalScore >= 7 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
+    if (totalScore >= 28 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
         showPopup("Wytze");
         addInviteeImage("Images/wytze.jpg", "Wytze");
     }
