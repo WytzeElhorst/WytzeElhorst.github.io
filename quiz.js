@@ -114,11 +114,20 @@ function bevestig() {
 
     // Load the next question or end the quiz
     if (currentQuestionIndex < questions.length) {
-        loadQuestion(currentQuestionIndex);
-    } else {
-        const resultMessage = document.getElementById("resultMessage");
-        resultMessage.innerHTML += `<br><br>De Quiz is af, hopelijk mag iedereen mee! Zo niet dan kan je hem nog een keertje proberen!<br><br>`;
-    }
+            loadQuestion(currentQuestionIndex);
+        } else {
+            // Hide the question container
+            const questionContainer = document.getElementById("questionContainer");
+            questionContainer.style.display = "none";
+
+            // Display the final message and reset button
+            const resultMessage = document.getElementById("resultMessage");
+            resultMessage.innerHTML = `
+                <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je hem nog een keertje proberen of heeft die persoon pech!</p>
+                <button class="button" onclick="resetQuiz()">Opnieuw Proberen</button>
+            `;
+            resultMessage.style.display = "block";
+        }
 }
 
 function showPopup(name) {
