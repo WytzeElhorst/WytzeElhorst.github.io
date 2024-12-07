@@ -28,8 +28,8 @@ function loadQuestion() {
 
         const resultMessage = document.getElementById("resultMessage");
         resultMessage.innerHTML = `
-            <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je hem nog een keertje proberen!</p>
-            <button class="button" onclick="resetQuiz()">Reset Quiz</button>
+            <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je de quiz nog een keertje proberen!</p>
+            <button class="button" onclick="resetQuiz()">Herstart Quiz</button>
         `;
         resultMessage.style.display = "block";
         return;
