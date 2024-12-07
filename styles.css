@@ -111,6 +111,15 @@ body {
     max-width: 600px; /* Set a maximum width for larger screens */
 }
 
+.ranking-dropdown {
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px; /* Set a width for consistency */
+}
+
 .popup {
     display: none;
     position: fixed;

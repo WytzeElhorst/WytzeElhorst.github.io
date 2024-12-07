@@ -31,7 +31,7 @@ function loadQuestion(index) {
     `;
 
     if (questionData.answerType === "text") {
-        // Render multiple text boxes if placeholders are provided
+        // Render text boxes
         questionData.placeholders.forEach((placeholder, idx) => {
             newQuestionHTML += `
                 <div>
@@ -47,6 +47,23 @@ function loadQuestion(index) {
                     <label>
                         <input type="radio" name="answer" id="answer${idx}" value="${option}">
                         ${option}
+                    </label>
+                </div>
+            `;
+        });
+    } else if (questionData.answerType === "ranking") {
+        // Render dropdowns for matching
+        questionData.options.forEach((option, idx) => {
+            let dropdownHTML = `<select id="answer${idx + 1}" class="ranking-dropdown"><option value="">Select</option>`;
+            questionData.dropdownOptions.forEach((dropdownOption) => {
+                dropdownHTML += `<option value="${dropdownOption}">${dropdownOption}</option>`;
+            });
+            dropdownHTML += `</select>`;
+
+            newQuestionHTML += `
+                <div>
+                    <label>
+                        ${option}: ${dropdownHTML}
                     </label>
                 </div>
             `;
@@ -67,46 +84,27 @@ function bevestig() {
     const currentQuestion = questions[currentQuestionIndex];
     let correctCount = 0;
 
-    if (questionData.answerType === "text") {
-            // Render text boxes
-            questionData.placeholders.forEach((placeholder, idx) => {
-                newQuestionHTML += `
-                    <div>
-                        <input type="text" class="answer-box" id="answer${idx + 1}" placeholder="${placeholder}">
-                    </div>
-                `;
-            });
-        } else if (questionData.answerType === "multiple-choice") {
-            // Render multiple-choice options
-            questionData.options.forEach((option, idx) => {
-                newQuestionHTML += `
-                    <div>
-                        <label>
-                            <input type="radio" name="answer" id="answer${idx}" value="${option}">
-                            ${option}
-                        </label>
-                    </div>
-                `;
-            });
-        } else if (questionData.answerType === "ranking") {
-            // Render dropdowns for ranking
-            questionData.options.forEach((option, idx) => {
-                newQuestionHTML += `
-                    <div>
-                        <label>
-                            ${option}:
-                            <select id="answer${idx + 1}" class="ranking-dropdown">
-                                <option value="">Select</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </label>
-                    </div>
-                `;
-            });
+    if (currentQuestion.answerType === "text") {
+        const userAnswers = currentQuestion.placeholders.map((_, idx) =>
+            document.getElementById(`answer${idx + 1}`).value.trim().toLowerCase()
+        );
+        correctCount = userAnswers.filter((answer, idx) => answer === currentQuestion.correctAnswers[idx].toLowerCase()).length;
+    } else if (currentQuestion.answerType === "multiple-choice") {
+        const selectedOption = document.querySelector('input[name="answer"]:checked');
+        const userAnswer = selectedOption ? selectedOption.value : null;
+        if (userAnswer === currentQuestion.correctAnswer) {
+            correctCount = 1;
         }
+    } else if (currentQuestion.answerType === "ranking") {
+        const userAnswers = currentQuestion.options.map((_, idx) =>
+            document.getElementById(`answer${idx + 1}`).value
+        );
+
+        // Award one point for each correctly ranked answer
+        correctCount = userAnswers.reduce((count, selectedOption, idx) => {
+            return count + (selectedOption === currentQuestion.correctAnswers[idx] ? 1 : 0);
+        }, 0);
+    }
 
     // Update the total score
     totalScore += correctCount;
