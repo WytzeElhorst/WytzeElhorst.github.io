@@ -21,35 +21,35 @@
     "image": "Images/vliegtuig.jpg"
   },
   {
-    "question": "Waar is dit??",
+    "question": "Waar is dit?",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
     "correctAnswer": "Valkenburg",
     "image": "Images/Valkenburg.jpg"
   },
   {
-    "question": "Waar is dit??",
+    "question": "Waar is dit?",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
     "correctAnswer": "Ardennen",
     "image": "Images/Ardennen.jpeg"
   },
   {
-    "question": "Waar is dit??",
+    "question": "Waar is dit?",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
     "correctAnswer": "Praag",
     "image": "Images/Tsjechie.jpg"
   },
   {
-    "question": "Waar is dit??",
+    "question": "Waar is dit?",
     "answerType": "multiple-choice",
     "options": ["Valkenburg", "Gelselaar", "Praag", "Ardennen"],
     "correctAnswer": "Gelselaar",
     "image": "Images/gelselaar.jpg"
   },
   {
-    "question": "Wie is dit??",
+    "question": "Wie is dit?",
     "answerType": "multiple-choice",
     "options": ["Wytze", "Feiko", "Tibbe", "Auke"],
     "correctAnswer": "Feiko",
