@@ -54,13 +54,13 @@ function loadQuestion() {
     `;
 
     if (questionData.answerType === "text") {
-        questionData.placeholders.forEach((placeholder, idx) => {
+        for (let i = 0; i < questionData.correctAnswers.length; i++) {
             newQuestionHTML += `
                 <div>
-                    <input type="text" class="answer-box" id="answer${idx + 1}">
+                    <input type="text" class="answer-box" id="answer${i + 1}" placeholder="Answer ${i + 1}">
                 </div>
             `;
-        });
+        }
     } else if (questionData.answerType === "multiple-choice") {
         questionData.options.forEach((option, idx) => {
             newQuestionHTML += `
