@@ -1,10 +1,18 @@
 [
+
   {
     "question": "Hoe heten alle hondjes die jij ooit samen met mama hebt gehad, van jong naar oud?",
     "answerType": "text",
     "correctAnswers": ["Maya", "Daisy", "Ozzie", "Brisan"],
     "placeholders": ["Het Princesje", "Dapper en Lief", "Makkelijk en Braaf", "Van voor mijn tijd, maar ook erg lief"],
     "image": "Images/doggies.jpeg"
+  },
+  {
+    "question": "In welke volgorde hebben wij deze landen bezocht? (1 = eerst, 4 = laastst)",
+    "answerType": "ranking",
+    "options": ["Egypte", "Denemarken", "Tsjechië", "Turkije"],
+    "correctAnswers": [2, 1, 4, 3],
+    "image": "Images/vliegtuig.jpg"
   },
   {
     "question": "Waar is dit??",
@@ -46,20 +54,20 @@
     "answerType": "multiple-choice",
     "options": ["Snuffie", "Buba", "Sammie", "Shaffy"],
     "correctAnswer": "Sammie",
-    "image": "Images/doggies.jpeg"
+    "image": "Images/guineapigs.webp"
   },
   {
     "question": "Welk van deze namen was niet van één van onze cavias?",
     "answerType": "multiple-choice",
     "options": ["Ilias", "Remi", "Ozzie", "Laika"],
     "correctAnswer": "Sammie",
-    "image": "Images/doggies.jpeg"
+    "image": "Images/cavia.jpg"
   },
   {
-    "question": "Toen Axel, Monique, Didi & Wytze samen 100 waren gingen we naar disneyland, in welk jaar worden we samen 250?",
+    "question": "Toen Axel, Monique, Didi & Wytze samen 100 waren gingen we naar Disneyland, in welk jaar worden we samen 250?",
     "answerType": "multiple-choice",
     "options": ["2025", "2028", "2035", "2038"],
     "correctAnswer": "2035",
-    "image": "Images/doggies.jpeg"
+    "image": "Images/disney.jpg"
   }
 ]

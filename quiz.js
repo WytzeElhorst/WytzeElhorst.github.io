@@ -67,20 +67,46 @@ function bevestig() {
     const currentQuestion = questions[currentQuestionIndex];
     let correctCount = 0;
 
-    if (currentQuestion.answerType === "text") {
-        // Collect answers from text boxes
-        const userAnswers = currentQuestion.placeholders.map((_, idx) =>
-            document.getElementById(`answer${idx + 1}`).value.trim().toLowerCase()
-        );
-        correctCount = userAnswers.filter((answer, idx) => answer === currentQuestion.correctAnswers[idx].toLowerCase()).length;
-    } else if (currentQuestion.answerType === "multiple-choice") {
-        // Collect selected answer from radio buttons
-        const selectedOption = document.querySelector('input[name="answer"]:checked');
-        const userAnswer = selectedOption ? selectedOption.value : null;
-        if (userAnswer === currentQuestion.correctAnswer) {
-            correctCount = 1;
+    if (questionData.answerType === "text") {
+            // Render text boxes
+            questionData.placeholders.forEach((placeholder, idx) => {
+                newQuestionHTML += `
+                    <div>
+                        <input type="text" class="answer-box" id="answer${idx + 1}" placeholder="${placeholder}">
+                    </div>
+                `;
+            });
+        } else if (questionData.answerType === "multiple-choice") {
+            // Render multiple-choice options
+            questionData.options.forEach((option, idx) => {
+                newQuestionHTML += `
+                    <div>
+                        <label>
+                            <input type="radio" name="answer" id="answer${idx}" value="${option}">
+                            ${option}
+                        </label>
+                    </div>
+                `;
+            });
+        } else if (questionData.answerType === "ranking") {
+            // Render dropdowns for ranking
+            questionData.options.forEach((option, idx) => {
+                newQuestionHTML += `
+                    <div>
+                        <label>
+                            ${option}:
+                            <select id="answer${idx + 1}" class="ranking-dropdown">
+                                <option value="">Select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </label>
+                    </div>
+                `;
+            });
         }
-    }
 
     // Update the total score
     totalScore += correctCount;
