@@ -172,6 +172,15 @@ function showPopup(name) {
     const popup = document.getElementById("popupMessage");
     popup.innerHTML = `<p>${name} eet ook mee!</p>`;
     popup.style.display = "block";
+    popup.classList.remove("hidden"); // Ensure the popup is fully visible initially
+
+    // Set a timeout to fade out the popup after 1 second
+    setTimeout(() => {
+        popup.classList.add("hidden"); // Add the hidden class to start the fade-out
+        setTimeout(() => {
+            popup.style.display = "none"; // Hide the popup completely after the fade-out
+        }, 1000); // Matches the duration of the fade-out animation
+    }, 1000); // Delay before starting the fade-out
 }
 
 function hidePopup() {

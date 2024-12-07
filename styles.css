@@ -144,7 +144,14 @@ body {
     border-radius: 10px;
     z-index: 1000;
     text-align: center;
+    opacity: 1; /* Fully visible initially */
+    transition: opacity 1s ease; /* Smooth fade-out transition */
 }
+
+.popup.hidden {
+    opacity: 0; /* Make it invisible */
+}
+
 @media (max-width: 600px) {
     .textbox, .answer-box {
         font-size: 14px;
