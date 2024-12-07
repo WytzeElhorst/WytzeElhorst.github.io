@@ -1,10 +1,15 @@
 [
 
   {
-    "question": "Hoe heten alle hondjes die jij ooit samen met mama hebt gehad, van jong naar oud?",
+    "question": "Hoe heten alle hondjes die jij ooit samen met mama hebt gehad?",
     "answerType": "text",
     "correctAnswers": ["Maya", "Daisy", "Ozzie", "Brisan"],
-    "placeholders": ["Het Princesje", "Dapper en Lief", "Makkelijk en Braaf", "Van voor mijn tijd, maar ook erg lief"],
+    "image": "Images/doggies.jpeg"
+  },
+  {
+    "question": "Hoe heten de katjes die jij ooit samen met mama hebt gehad?",
+    "answerType": "text",
+    "correctAnswers": ["Sammie", "Billy", "Ilias"],
     "image": "Images/doggies.jpeg"
   },
   {
@@ -72,10 +77,19 @@
     "image": "Images/disney.jpg"
   },
   {
-    "question": "Welk dier kwam in Friesland onze woonboot ?",
-    "answerType": "multiple-choice",
-    "options": ["2025", "2028", "2035", "2038"],
-    "correctAnswer": "2035",
-    "image": "Images/disney.jpg"
+    "question": "Welk dier past bij welke vakantie?",
+    "answerType": "ranking",
+    "options": ["Egypte", "Denemarken", "Frankrijk", "Friesland"],
+    "dropdownOptions": ["Hond", "Kat", "Eend", "Geit"],
+    "correctAnswers": ["2", "4", "1", "3"],
+    "image": "Images/paws.webp"
+  },
+  {
+    "question": "Welk dier past bij welke vakantie?",
+    "answerType": "ranking",
+    "options": ["Egypte", "Denemarken", "Frankrijk", "Friesland"],
+    "dropdownOptions": ["Hond", "Kat", "Eend", "Geit"],
+    "correctAnswers": ["2", "4", "1", "3"],
+    "image": "Images/paws.webp"
   }
 ]
