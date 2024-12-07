@@ -91,22 +91,22 @@ function bevestig() {
 
     // Show the popup and add another image if score reaches 4
     if (totalScore >= 4 && !document.querySelector('.invite-item img[alt="Lisanne"]')) {
-        showPopup();
+        showPopup("Lisanne");
         addInviteeImage("Images/schatje.jpg", "Lisanne");
     }
 
     if (totalScore >= 5 && !document.querySelector('.invite-item img[alt="Jeroen"]')) {
-            showPopup();
+            showPopup("Jeroen");
             addInviteeImage("Images/jeroen.jpg", "Jeroen");
     }
 
     if (totalScore >= 6 && !document.querySelector('.invite-item img[alt="Didi"]')) {
-            showPopup();
+            showPopup("Didi");
             addInviteeImage("Images/Didi.jpg", "Didi");
     }
 
     if (totalScore >= 7 && !document.querySelector('.invite-item img[alt="Wytze"]')) {
-            showPopup();
+            showPopup("Wytze");
             addInviteeImage("Images/wytze.jpg", "Wytze");
     }
 
@@ -121,8 +121,9 @@ function bevestig() {
     }
 }
 
-function showPopup() {
+function showPopup(name) {
     const popup = document.getElementById("popupMessage");
+    popup.innerHTML = `<p>${name} eet ook mee!</p>`; // Dynamically set the popup message
     popup.style.display = "block";
 }
 
