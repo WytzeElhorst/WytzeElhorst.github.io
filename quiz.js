@@ -57,7 +57,7 @@ function loadQuestion() {
         for (let i = 0; i < questionData.correctAnswers.length; i++) {
             newQuestionHTML += `
                 <div>
-                    <input type="text" class="answer-box" id="answer${i + 1}" placeholder="Answer ${i + 1}">
+                    <input type="text" class="answer-box" id="answer${i + 1}">
                 </div>
             `;
         }
@@ -111,7 +111,7 @@ function bevestig() {
 
     if (currentQuestion.answerType === "text") {
         // Gather user inputs and compare without considering order
-        const userAnswers = currentQuestion.placeholders.map((_, idx) =>
+        const userAnswers = currentQuestion.correctAnswers.map((_, idx) =>
             document.getElementById(`answer${idx + 1}`).value.trim().toLowerCase()
         );
         const correctAnswers = currentQuestion.correctAnswers.map(answer => answer.toLowerCase());
