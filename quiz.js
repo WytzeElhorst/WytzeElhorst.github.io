@@ -100,8 +100,8 @@ function loadQuestion() {
 }
 
 function bevestig() {
-    const currentQuestion = questions[currentQuestionIndex];
-    let correctCount = 0;
+        const currentQuestion = questions.find(question => question === questions[currentQuestionIndex]);
+        let correctCount = 0;
 
     if (currentQuestion.answerType === "text") {
         const userAnswers = currentQuestion.placeholders.map((_, idx) =>
