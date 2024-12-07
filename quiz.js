@@ -110,22 +110,13 @@ function bevestig() {
             addInviteeImage("Images/wytze.jpg", "Wytze");
     }
 
-    // Show feedback for the current question
-    const resultMessage = document.getElementById("resultMessage");
-    resultMessage.innerHTML = `You got ${correctCount} out of ${
-        currentQuestion.answerType === "text" ? currentQuestion.correctAnswers.length : 1
-    } correct!`;
-
     currentQuestionIndex++;
 
     // Load the next question or end the quiz
     if (currentQuestionIndex < questions.length) {
         loadQuestion(currentQuestionIndex);
     } else {
-        resultMessage.innerHTML += `<br><br>The quiz is over! Thanks for participating.<br><br>
-                                    <strong>Papa,</strong><br>
-                                    Thank you for taking the time to complete this quiz. We hope you enjoyed it, and we can't wait to have a wonderful dinner with you.<br>
-                                    <em>With lots of love, [Your Name]</em>`;
+        resultMessage.innerHTML += `<br><br>De Quiz is af, hopelijk mag iedereen mee! Zo niet dan kan je hem nog een keertje proberen!<br><br>;
     }
 }
 
