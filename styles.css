@@ -10,18 +10,37 @@ body {
     height: 100vh;
     margin: 0;
 }
+
+.top-bar {
+    display: flex; /* Arrange items horizontally */
+    justify-content: space-between; /* Space between invite list and score */
+    align-items: center; /* Vertically align content */
+    padding: 10px 20px; /* Add some padding */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional background color */
+    width: 100%; /* Ensure it spans the full width of the page */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for definition */
+    margin-bottom: 20px; /* Add spacing below the bar */
+}
+
 .invite-list {
     display: flex;
     align-items: center;
-    margin-top: 10px;
-    color: white;
 }
+
 .invite-list p {
     margin-right: 20px;
     font-weight: bold;
     font-size: 18px;
-    text-shadow: 2px 2px 2px black;
+    color: #333; /* Dark text color */
 }
+
+.score-display {
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* White text */
+    text-shadow: 2px 2px 4px black; /* Black border effect */
+}
+
 .invite-item {
     text-align: center;
     margin: 0 10px;
@@ -108,14 +127,7 @@ body {
     font-size: 16px;
     resize: none;
 }
-#scoreDisplay {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px black;
-    margin-top: 10px;
-    text-align: center;
-}
+
 .question-image {
     display: block;
     width: 100%; /* Make it responsive */
