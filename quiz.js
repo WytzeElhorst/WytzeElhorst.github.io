@@ -32,7 +32,7 @@ function loadQuestion() {
             <p>De Quiz is af, hopelijk mag iedereen mee! Zo niet, dan kan je hem nog een keertje proberen!</p>
             <button class="button" onclick="resetQuiz()">Reset Quiz</button>
         `;
-        resultMessage.style.display = "block";
+        resultMessage.style.display = "block"; // Ensure the result message is visible
         return;
     }
 
@@ -94,11 +94,14 @@ function loadQuestion() {
         <div>
             <button class="button" onclick="bevestig()">Bevestig</button>
         </div>
-        <div id="resultMessage"></div>
     `;
 
     questionContainer.innerHTML = newQuestionHTML;
     questionContainer.style.display = "block";
+
+    // Hide result message when starting a new question
+    const resultMessage = document.getElementById("resultMessage");
+    resultMessage.style.display = "none";
 }
 
 function bevestig() {
