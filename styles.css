@@ -26,15 +26,38 @@ body {
 }
 
 .invite-list {
-    display: flex;
-    align-items: center;
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center the items */
+    gap: 10px; /* Add spacing between items */
+    width: 90%; /* Match the page content width */
+    max-width: 600px; /* Set a max width to match the question container */
+    margin: 20px auto; /* Center the invite list horizontally */
+    padding: 10px; /* Add some padding */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
 }
 
-.invite-list p {
-    margin-right: 20px;
-    font-weight: bold;
-    font-size: 18px;
-    color: #333; /* Dark text color */
+.invite-item {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center the image and text */
+    text-align: center;
+    width: 80px; /* Set a fixed width for each item */
+}
+
+.invite-item img {
+    width: 60px; /* Ensure images are uniformly sized */
+    height: 60px; /* Keep images square */
+    object-fit: cover; /* Crop or scale images to fit the container */
+    border-radius: 50%; /* Make images circular */
+    margin-bottom: 5px; /* Add spacing below the image */
+}
+
+.invite-item p {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    margin: 0;
 }
 
 .score-display {
@@ -53,17 +76,6 @@ body {
     text-align: center;
 }
 
-.invite-item {
-    text-align: center;
-    margin: 0 10px;
-}
-.invite-item img {
-    width: auto;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    max-width: 100%;
-}
 .container {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 20px;
